@@ -2,9 +2,8 @@ import { NextResponse } from "next/server";
 import { login } from "@/lib/auth";
 
 export async function POST(request: Request) {
-  const { identifier, password } = await request.json();
-
   try {
+    const { identifier, password } = await request.json();
     const { jwt, user } = await login(identifier, password);
 
     const response = NextResponse.json({ user });
